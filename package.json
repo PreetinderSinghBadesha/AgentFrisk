@@ -1,0 +1,51 @@
+{
+  "name": "agentfrisk",
+  "version": "0.1.0",
+  "description": "Security linter for WebMCP tools: finds every tool a site exposes to AI agents and flags the dangerous ones before they ship.",
+  "type": "module",
+  "bin": {
+    "agentfrisk": "dist/cli/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "webmcp",
+    "mcp",
+    "ai-agents",
+    "security",
+    "linter",
+    "sarif",
+    "static-analysis"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "htmlparser2": "^12.0.0",
+    "picocolors": "^1.1.1",
+    "typescript": "~6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "ajv": "^8.20.0",
+    "ajv-draft-04": "^1.0.0",
+    "ajv-formats": "^3.0.1",
+    "vitest": "^4.1.11"
+  }
+}

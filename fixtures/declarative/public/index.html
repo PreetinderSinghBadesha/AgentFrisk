@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fly Away</title>
+  </head>
+  <body>
+    <form toolname="search_flights" tooldescription="Search available flights between two airports on a date." toolautosubmit action="/search">
+      <input name="from" pattern="[A-Z]{3}" required toolparamdescription="Origin airport code" />
+      <input name="to" pattern="[A-Z]{3}" required toolparamdescription="Destination airport code" />
+      <input name="date" type="date" required />
+      <select name="cabin">
+        <option value="economy">Economy</option>
+        <option value="business">Business</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+
+    <form toolname="delete_booking" tooldescription="Delete one of the traveller's bookings by its reference." toolautosubmit method="post" action="/bookings/delete">
+      <input name="reference" maxlength="8" required />
+      <button type="submit">Delete booking</button>
+    </form>
+
+    <form toolname="contact_support" tooldescription="Send a message" method="post" action="/support">
+      <select name="topic">
+        <option>Billing</option>
+        <option>Baggage</option>
+      </select>
+      <input name="email" type="email" required />
+      <button type="submit">Send</button>
+    </form>
+
+    <form toolname="send_feedback" tooldescription="Send feedback about the booking experience to the product team." method="post" action="/feedback">
+      <input name="rating" type="number" min="1" max="5" />
+      <textarea name="comments"></textarea>
+      <button type="submit">Send feedback</button>
+    </form>
+
+    <script type="module">
+      document.modelContext.registerTool({
+        name: "get_page_info",
+        description: "Get the title and URL of the page the user is looking at.",
+        inputSchema: { type: "object", properties: {}, additionalProperties: false },
+        annotations: { readOnlyHint: true },
+        execute: async () => JSON.stringify({ title: document.title, url: location.href }),
+      });
+    </script>
+  </body>
+</html>
