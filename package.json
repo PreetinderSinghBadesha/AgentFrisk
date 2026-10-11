@@ -2,6 +2,15 @@
   "name": "agentfrisk",
   "version": "0.1.0",
   "description": "Security linter for WebMCP tools: finds every tool a site exposes to AI agents and flags the dangerous ones before they ship.",
+  "author": "preetindersinghbadesha",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preetindersinghbadesha/agentfrisk.git"
+  },
+  "homepage": "https://github.com/preetindersinghbadesha/agentfrisk#readme",
+  "bugs": {
+    "url": "https://github.com/preetindersinghbadesha/agentfrisk/issues"
+  },
   "type": "module",
   "bin": {
     "agentfrisk": "dist/cli/index.js"
